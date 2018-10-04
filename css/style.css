@@ -1,0 +1,46 @@
+/*--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+--*/
+
+
+.header_agileits_left ul li,
+.header_agileits_left ul li a {
+    display: inline-block;
+    font-size: 15px;
+    color: black;
+    letter-spacing: 1px;
+}
+
+.header_agileits_left ul li i,
+.header-loginw3ls i {
+    color: #ff3c41;
+}
+
+.header_right a {
+    color: black;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.header-loginw3ls a:hover {
+    color: #ff3c41;
+}
+
+/* social icons */
+
+.w3social-icons ul li {
+    display: inline-block;
+}
+
+.w3social-icons ul li a {
+    color: #0ebeff;
+    font-size: 18px;
+}
+
+
+
+
+
