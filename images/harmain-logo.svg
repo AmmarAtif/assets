@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100" width="320" height="100">
+  <!-- Background plate -->
+  <rect x="0" y="0" width="320" height="100" rx="8" fill="transparent"/>
+
+  <!-- Flame / food icon -->
+  <g transform="translate(10, 10)">
+    <!-- Plate circle -->
+    <circle cx="40" cy="50" r="36" fill="#c0392b"/>
+    <circle cx="40" cy="50" r="30" fill="#e74c3c"/>
+    <!-- Fork left -->
+    <rect x="26" y="30" width="3" height="22" rx="1.5" fill="#fff"/>
+    <rect x="26" y="30" width="1.5" height="10" rx="0.5" fill="#fff"/>
+    <rect x="29" y="30" width="1.5" height="10" rx="0.5" fill="#fff"/>
+    <rect x="32" y="30" width="1.5" height="10" rx="0.5" fill="#fff"/>
+    <!-- Knife right -->
+    <rect x="50" y="30" width="3" height="22" rx="1.5" fill="#fff"/>
+    <path d="M50 30 Q56 36 53 42 L50 42 Z" fill="#fff"/>
+    <!-- Steam lines -->
+    <path d="M36 18 Q33 13 36 8" stroke="#f39c12" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M40 16 Q37 11 40 6" stroke="#f39c12" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M44 18 Q41 13 44 8" stroke="#f39c12" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Brand text: Harmain -->
+  <text x="92" y="48" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700" fill="#c0392b" letter-spacing="1">Harmain</text>
+
+  <!-- Divider line -->
+  <line x1="92" y1="56" x2="308" y2="56" stroke="#f39c12" stroke-width="1.5"/>
+
+  <!-- Sub text: FOODS -->
+  <text x="94" y="76" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-weight="400" fill="#2c3e50" letter-spacing="6">FOODS</text>
+
+  <!-- Tagline -->
+  <text x="94" y="92" font-family="Arial, sans-serif" font-size="10" fill="#7f8c8d" letter-spacing="2">FROZEN &amp; FRESH DELIGHTS</text>
+</svg>
