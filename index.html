@@ -20,8 +20,6 @@
     body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); background: #fff; }
     img  { max-width: 100%; display: block; }
     a    { text-decoration: none; transition: color .3s; }
-
-    /* NAVBAR */
     .navbar {
       position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
       background: rgba(26,26,46,.97); backdrop-filter: blur(10px);
@@ -48,8 +46,6 @@
     .nav-cta:hover { background:var(--red-dk)!important; }
     .nav-toggle { display:none; background:none; border:none; cursor:pointer; }
     .nav-toggle span { display:block; width:26px; height:3px; background:#fff; margin:5px 0; border-radius:2px; }
-
-    /* HERO */
     .hero {
       min-height:100vh;
       background:linear-gradient(135deg,#1a1a2e 0%,#16213e 55%,#0f3460 100%);
@@ -107,8 +103,6 @@
       animation:heroFloat 4s ease-in-out infinite; object-fit:cover; height:380px;
     }
     @keyframes heroFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
-
-    /* TICKER */
     .ticker { background:var(--gold); overflow:hidden; padding:11px 0; }
     .ticker-track {
       display:flex; gap:60px; white-space:nowrap;
@@ -117,8 +111,6 @@
     @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
     .ticker-item { font-size:13px; font-weight:800; color:#000; letter-spacing:1px; text-transform:uppercase; display:flex; align-items:center; gap:10px; }
     .ticker-dot  { width:6px; height:6px; background:var(--red); border-radius:50%; flex-shrink:0; }
-
-    /* SECTIONS */
     section { padding:90px 24px; }
     .section-inner { max-width:1200px; margin:0 auto; }
     .section-tag {
@@ -128,8 +120,6 @@
     .section-title { font-size:clamp(1.8rem,4vw,2.7rem); font-weight:900; color:var(--text); margin-bottom:14px; line-height:1.2; }
     .section-desc  { font-size:1rem; color:var(--muted); max-width:520px; line-height:1.75; }
     .section-header { margin-bottom:50px; }
-
-    /* CATEGORIES */
     #categories { background:var(--light); }
     .cat-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:18px; }
     .cat-card {
@@ -140,8 +130,6 @@
     .cat-card:hover { transform:translateY(-6px); box-shadow:0 14px 36px rgba(0,0,0,.12); border-color:var(--gold); }
     .cat-icon { font-size:2.5rem; margin-bottom:12px; display:block; }
     .cat-name { font-size:13px; font-weight:700; color:var(--text); }
-
-    /* MENU */
     .menu-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:28px; }
     .menu-card {
       background:#fff; border-radius:20px; overflow:hidden;
@@ -168,8 +156,6 @@
       cursor:pointer; transition:background .3s;
     }
     .btn-order:hover { background:var(--red-dk); }
-
-    /* ABOUT */
     #about { background:var(--dark); }
     #about .section-tag  { color:var(--gold); }
     #about .section-title { color:#fff; }
@@ -195,8 +181,6 @@
     }
     .feature-text h4 { font-size:15px; font-weight:700; color:#fff; margin-bottom:4px; }
     .feature-text p  { font-size:13px; color:#90a4ae; line-height:1.6; }
-
-    /* TESTIMONIALS */
     #testimonials { background:var(--light); }
     .testi-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:28px; }
     .testi-card {
@@ -218,8 +202,6 @@
     }
     .testi-name { font-size:15px; font-weight:700; color:var(--text); }
     .testi-role { font-size:12px; color:var(--muted); }
-
-    /* ORDER */
     #order {
       background:linear-gradient(135deg,var(--red) 0%,#e74c3c 50%,var(--red-dk) 100%);
       text-align:center;
@@ -241,8 +223,6 @@
     .order-btn:hover { background:rgba(255,255,255,.24); border-color:#fff; color:#fff; }
     .order-btn.whatsapp { background:#25d366; border-color:#25d366; }
     .order-btn.whatsapp:hover { background:#1da851; border-color:#1da851; color:#fff; }
-
-    /* CONTACT */
     #contact { background:var(--dark); }
     #contact .section-tag   { color:var(--gold); }
     #contact .section-title { color:#fff; }
@@ -274,8 +254,6 @@
       cursor:pointer; transition:background .3s,transform .2s; width:100%;
     }
     .btn-submit:hover { background:var(--red-dk); transform:translateY(-2px); }
-
-    /* FOOTER */
     footer { background:#08081a; color:#90a4ae; padding:50px 24px 22px; }
     .footer-inner { max-width:1200px; margin:0 auto; }
     .footer-grid  { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; margin-bottom:40px; }
@@ -299,8 +277,6 @@
     .footer-col ul li a:hover { color:var(--gold); }
     .footer-bottom { border-top:1px solid rgba(255,255,255,.06); padding-top:22px; text-align:center; font-size:13px; }
     .footer-bottom span { color:var(--gold); }
-
-    /* FLOAT BUTTON */
     .float-wa {
       position:fixed; bottom:28px; right:28px; z-index:999;
       width:58px; height:58px; border-radius:50%;
@@ -314,8 +290,6 @@
       70% { box-shadow:0 0 0 16px rgba(37,211,102,0); }
       100%{ box-shadow:0 0 0 0 rgba(37,211,102,0); }
     }
-
-    /* MENU CATEGORIES */
     .menu-category { margin-bottom: 56px; }
     .menu-category:last-child { margin-bottom: 0; }
     .menu-cat-title {
@@ -327,8 +301,6 @@
       content: ''; flex: 1; height: 2px;
       background: linear-gradient(to right, var(--gold), transparent);
     }
-
-    /* RESPONSIVE */
     @media(max-width:900px){
       .hero-content  { grid-template-columns:1fr; text-align:center; }
       .hero-img-wrap { order:-1; }
@@ -348,16 +320,11 @@
   </style>
 </head>
 <body>
-
-<!-- NAVBAR -->
 <nav class="navbar" id="navbar">
   <div class="navbar-inner">
     <a href="#home" class="nav-logo">
       <div class="nav-logo-icon"><i class="fa-solid fa-bowl-food"></i></div>
-      <div class="nav-logo-text">
-        <strong>Harmain</strong>
-        <span>Foods</span>
-      </div>
+      <div class="nav-logo-text"><strong>Harmain</strong><span>Foods</span></div>
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home">Home</a></li>
@@ -373,8 +340,6 @@
     </button>
   </div>
 </nav>
-
-<!-- HERO -->
 <section id="home" class="hero">
   <div class="hero-bg"></div>
   <div class="particle" style="width:80px;height:80px;top:15%;left:7%;animation-delay:0s"></div>
@@ -388,7 +353,7 @@
       <p class="hero-sub">Authentic South Asian flavours, hygienically prepared and frozen at peak freshness. From samosas to parathas — deliciousness delivered to your door.</p>
       <div class="hero-actions">
         <a href="#order" class="btn-red"><i class="fa-solid fa-phone"></i> Order Now</a>
-        <a href="#menu"  class="btn-outline"><i class="fa-solid fa-utensils"></i> View Menu</a>
+        <a href="#menu" class="btn-outline"><i class="fa-solid fa-utensils"></i> View Menu</a>
       </div>
       <div class="hero-stats">
         <div><div class="stat-num">500+</div><div class="stat-label">Happy Customers</div></div>
@@ -397,14 +362,10 @@
       </div>
     </div>
     <div class="hero-img-wrap">
-      <img class="hero-img"
-           src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&q=80"
-           alt="Harmain Foods" />
+      <img class="hero-img" src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&q=80" alt="Harmain Foods" />
     </div>
   </div>
 </section>
-
-<!-- TICKER -->
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
     <span class="ticker-item"><span class="ticker-dot"></span>Chicken Cheese Half Moon</span>
@@ -433,8 +394,6 @@
     <span class="ticker-item"><span class="ticker-dot"></span>Fun Nuggets</span>
   </div>
 </div>
-
-<!-- CATEGORIES -->
 <section id="categories">
   <div class="section-inner">
     <div class="section-header">
@@ -449,8 +408,6 @@
     </div>
   </div>
 </section>
-
-<!-- MENU -->
 <section id="menu" style="background:#fff">
   <div class="section-inner">
     <div class="section-header">
@@ -458,7 +415,6 @@
       <h2 class="section-title">Fresh From Our Kitchen</h2>
       <p class="section-desc">Every item made with care using quality ingredients and authentic recipes.</p>
     </div>
-    <!-- CHICKEN SPECIALITIES -->
     <div class="menu-category">
       <h3 class="menu-cat-title">&#127859; Chicken Specialities</h3>
       <div class="menu-grid">
@@ -531,8 +487,6 @@
         </div>
       </div>
     </div>
-
-    <!-- TEA-TIME SNACKS -->
     <div class="menu-category">
       <h3 class="menu-cat-title">&#9749; Tea-Time Snacks</h3>
       <div class="menu-grid">
@@ -579,7 +533,7 @@
         </div>
         <div class="menu-card">
           <div class="menu-img-wrap">
-            <img src="https://images.unsplash.com/photo-1620921568790-c1cf8983db3e?w=600&q=80" alt="Lacha Paratha" loading="lazy"/>
+            <img src="https://i.ytimg.com/vi/nMuvAuMI7bk/hq720.jpg" alt="Lacha Paratha" loading="lazy" style="object-fit:cover;width:100%;height:100%;object-position:center top;"/>
             <span class="menu-badge new">New!</span>
           </div>
           <div class="menu-body">
@@ -607,14 +561,12 @@
         </div>
       </div>
     </div>
-
-    <!-- NUGGETS CORNER -->
     <div class="menu-category">
       <h3 class="menu-cat-title">&#129370; Nuggets Corner</h3>
       <div class="menu-grid">
         <div class="menu-card">
           <div class="menu-img-wrap">
-            <img src="https://images.unsplash.com/photo-1562802378-063ec186a863?w=600&q=80" alt="Simple Nuggets" loading="lazy"/>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGMXufdPkVcjpCT4HTiEvJdC6_8HovQ6FcsVQVLLNafg&s=10" alt="Simple Nuggets" loading="lazy" style="object-fit:cover;width:100%;height:100%;"/>
             <span class="menu-badge">Value Pack</span>
           </div>
           <div class="menu-body">
@@ -628,7 +580,7 @@
         </div>
         <div class="menu-card">
           <div class="menu-img-wrap">
-            <img src="https://images.unsplash.com/photo-1614346134254-c8c70e23d5a2?w=600&q=80" alt="Fun Nuggets" loading="lazy"/>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqQ0D-Hjt8r_5uYMFEunq8GxPMTdNQ4YmLaspry8ItZ0fwrqr7WzUD0IEi&s=10" alt="Fun Nuggets" loading="lazy" style="object-fit:cover;width:100%;height:100%;"/>
             <span class="menu-badge">Kids Fav</span>
           </div>
           <div class="menu-body">
@@ -644,8 +596,6 @@
     </div>
   </div>
 </section>
-
-<!-- ABOUT -->
 <section id="about">
   <div class="section-inner">
     <div class="about-grid">
@@ -655,33 +605,17 @@
       <div>
         <span class="section-tag">Our Story</span>
         <h2 class="section-title">Crafted with Love,<br>Frozen for Freshness</h2>
-        <p class="section-desc">
-          Harmain Foods was born from a passion for authentic South Asian home cooking. Every product is made from scratch using traditional recipes, then frozen at peak freshness so you enjoy the same homemade taste every time.
-        </p>
+        <p class="section-desc">Harmain Foods was born from a passion for authentic South Asian home cooking. Every product is made from scratch using traditional recipes, then frozen at peak freshness so you enjoy the same homemade taste every time.</p>
         <ul class="feature-list">
-          <li>
-            <div class="feature-icon"><i class="fa-solid fa-check"></i></div>
-            <div class="feature-text"><h4>100% Halal Certified</h4><p>All our meat is sourced from certified halal suppliers.</p></div>
-          </li>
-          <li>
-            <div class="feature-icon"><i class="fa-solid fa-snowflake"></i></div>
-            <div class="feature-text"><h4>Flash-Frozen for Quality</h4><p>Frozen within hours of cooking to preserve maximum flavour.</p></div>
-          </li>
-          <li>
-            <div class="feature-icon"><i class="fa-solid fa-truck"></i></div>
-            <div class="feature-text"><h4>Fast Home Delivery</h4><p>Order by phone or WhatsApp — we deliver to your doorstep.</p></div>
-          </li>
-          <li>
-            <div class="feature-icon"><i class="fa-solid fa-leaf"></i></div>
-            <div class="feature-text"><h4>No Artificial Preservatives</h4><p>Clean ingredients you can trust, just like grandma's kitchen.</p></div>
-          </li>
+          <li><div class="feature-icon"><i class="fa-solid fa-check"></i></div><div class="feature-text"><h4>100% Halal Certified</h4><p>All our meat is sourced from certified halal suppliers.</p></div></li>
+          <li><div class="feature-icon"><i class="fa-solid fa-snowflake"></i></div><div class="feature-text"><h4>Flash-Frozen for Quality</h4><p>Frozen within hours of cooking to preserve maximum flavour.</p></div></li>
+          <li><div class="feature-icon"><i class="fa-solid fa-truck"></i></div><div class="feature-text"><h4>Fast Home Delivery</h4><p>Order by phone or WhatsApp — we deliver to your doorstep.</p></div></li>
+          <li><div class="feature-icon"><i class="fa-solid fa-leaf"></i></div><div class="feature-text"><h4>No Artificial Preservatives</h4><p>Clean ingredients you can trust, just like grandma's kitchen.</p></div></li>
         </ul>
       </div>
     </div>
   </div>
 </section>
-
-<!-- TESTIMONIALS -->
 <section id="testimonials">
   <div class="section-inner">
     <div class="section-header">
@@ -690,35 +624,12 @@
       <p class="section-desc">Real feedback from real food lovers.</p>
     </div>
     <div class="testi-grid">
-      <div class="testi-card">
-        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testi-text">"The samosas are absolutely incredible — crispy outside, perfectly spiced inside. I keep a stock in the freezer at all times. Best frozen food in the city!"</p>
-        <div class="testi-author">
-          <div class="testi-avatar">A</div>
-          <div><div class="testi-name">Ayesha Khan</div><div class="testi-role">Lahore, Pakistan</div></div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testi-text">"Ordered the seekh kebab and lacha paratha combo — wow! It tasted like fresh restaurant food. Delivery was quick and packaging was excellent."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">U</div>
-          <div><div class="testi-name">Usman Raza</div><div class="testi-role">Faisalabad, Pakistan</div></div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testi-text">"As a working mum, Harmain Foods has been a lifesaver. The french fries and chicken rolls are my kids' favourites — ready in minutes and so delicious!"</p>
-        <div class="testi-author">
-          <div class="testi-avatar">S</div>
-          <div><div class="testi-name">Sana Mirza</div><div class="testi-role">Karachi, Pakistan</div></div>
-        </div>
-      </div>
+      <div class="testi-card"><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">"The samosas are absolutely incredible — crispy outside, perfectly spiced inside. I keep a stock in the freezer at all times. Best frozen food in the city!"</p><div class="testi-author"><div class="testi-avatar">A</div><div><div class="testi-name">Ayesha Khan</div><div class="testi-role">Lahore, Pakistan</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">"Ordered the seekh kebab and lacha paratha combo — wow! It tasted like fresh restaurant food. Delivery was quick and packaging was excellent."</p><div class="testi-author"><div class="testi-avatar">U</div><div><div class="testi-name">Usman Raza</div><div class="testi-role">Faisalabad, Pakistan</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">"As a working mum, Harmain Foods has been a lifesaver. The french fries and chicken rolls are my kids' favourites — ready in minutes and so delicious!"</p><div class="testi-author"><div class="testi-avatar">S</div><div><div class="testi-name">Sana Mirza</div><div class="testi-role">Karachi, Pakistan</div></div></div></div>
     </div>
   </div>
 </section>
-
-<!-- ORDER -->
 <section id="order">
   <div class="section-inner">
     <span class="section-tag">Place Your Order</span>
@@ -728,65 +639,34 @@
     <div class="order-sub">Available 9 AM – 10 PM &nbsp;|&nbsp; 7 days a week</div>
     <div class="order-channels">
       <a href="tel:+923214174086" class="order-btn"><i class="fa-solid fa-phone"></i> Call Us</a>
-      <a href="https://wa.me/923214174086?text=Hi%20Harmain%20Foods%2C%20I'd%20like%20to%20place%20an%20order!"
-         class="order-btn whatsapp" target="_blank" rel="noopener">
-        <i class="fa-brands fa-whatsapp"></i> WhatsApp
-      </a>
+      <a href="https://wa.me/923214174086?text=Hi%20Harmain%20Foods%2C%20I'd%20like%20to%20place%20an%20order!" class="order-btn whatsapp" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
     </div>
   </div>
 </section>
-
-<!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
-    <div class="section-header">
-      <span class="section-tag">Get In Touch</span>
-      <h2 class="section-title">Contact Us</h2>
-    </div>
+    <div class="section-header"><span class="section-tag">Get In Touch</span><h2 class="section-title">Contact Us</h2></div>
     <div class="contact-grid">
       <div class="contact-info">
         <h3>We'd Love to Hear From You</h3>
-        <div class="contact-item">
-          <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
-          <div class="contact-text"><h4>Phone / WhatsApp</h4><p><a href="tel:+923214174086">032-141-74086</a></p></div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
-          <div class="contact-text"><h4>Location</h4><p>Pakistan</p></div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon"><i class="fa-solid fa-clock"></i></div>
-          <div class="contact-text"><h4>Working Hours</h4><p>Monday – Sunday<br/>9:00 AM – 10:00 PM</p></div>
-        </div>
+        <div class="contact-item"><div class="contact-icon"><i class="fa-solid fa-phone"></i></div><div class="contact-text"><h4>Phone / WhatsApp</h4><p><a href="tel:+923214174086">032-141-74086</a></p></div></div>
+        <div class="contact-item"><div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div><div class="contact-text"><h4>Location</h4><p>Pakistan</p></div></div>
+        <div class="contact-item"><div class="contact-icon"><i class="fa-solid fa-clock"></i></div><div class="contact-text"><h4>Working Hours</h4><p>Monday – Sunday<br/>9:00 AM – 10:00 PM</p></div></div>
       </div>
       <form onsubmit="handleForm(event)">
-        <div class="form-group">
-          <label>Your Name</label>
-          <input type="text" class="form-ctrl" placeholder="e.g. Ali Hassan" required />
-        </div>
-        <div class="form-group">
-          <label>Phone Number</label>
-          <input type="tel" class="form-ctrl" placeholder="03XX-XXXXXXX" required />
-        </div>
-        <div class="form-group">
-          <label>Your Order / Message</label>
-          <textarea class="form-ctrl" placeholder="Tell us what you'd like to order..." required></textarea>
-        </div>
+        <div class="form-group"><label>Your Name</label><input type="text" class="form-ctrl" placeholder="e.g. Ali Hassan" required /></div>
+        <div class="form-group"><label>Phone Number</label><input type="tel" class="form-ctrl" placeholder="03XX-XXXXXXX" required /></div>
+        <div class="form-group"><label>Your Order / Message</label><textarea class="form-ctrl" placeholder="Tell us what you'd like to order..." required></textarea></div>
         <button type="submit" class="btn-submit">Send Message &rarr;</button>
       </form>
     </div>
   </div>
 </section>
-
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="footer-brand-logo">
-          <div class="logo-icon"><i class="fa-solid fa-bowl-food"></i></div>
-          <div class="logo-text"><strong>Harmain</strong><span>Foods</span></div>
-        </div>
+        <div class="footer-brand-logo"><div class="logo-icon"><i class="fa-solid fa-bowl-food"></i></div><div class="logo-text"><strong>Harmain</strong><span>Foods</span></div></div>
         <p>Premium frozen and fresh South Asian food, crafted with love and delivered to your doorstep.</p>
         <div class="social-links">
           <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
@@ -794,52 +674,19 @@
           <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
         </div>
       </div>
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#categories">Categories</a></li>
-          <li><a href="#menu">Menu</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#order">Order Now</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Our Menu</h4>
-        <ul>
-          <li><a href="#menu">Samosas</a></li>
-          <li><a href="#menu">Seekh Kebab</a></li>
-          <li><a href="#menu">Lacha Paratha</a></li>
-          <li><a href="#menu">French Fries</a></li>
-          <li><a href="#menu">Chicken Rolls</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="tel:+923214174086">032-141-74086</a></li>
-          <li><a href="https://wa.me/923214174086">WhatsApp</a></li>
-          <li><a href="#contact">Send Message</a></li>
-        </ul>
-      </div>
+      <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#categories">Categories</a></li><li><a href="#menu">Menu</a></li><li><a href="#about">About</a></li><li><a href="#order">Order Now</a></li></ul></div>
+      <div class="footer-col"><h4>Our Menu</h4><ul><li><a href="#menu">Samosas</a></li><li><a href="#menu">Seekh Kebab</a></li><li><a href="#menu">Lacha Paratha</a></li><li><a href="#menu">French Fries</a></li><li><a href="#menu">Chicken Rolls</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="tel:+923214174086">032-141-74086</a></li><li><a href="https://wa.me/923214174086">WhatsApp</a></li><li><a href="#contact">Send Message</a></li></ul></div>
     </div>
     <div class="footer-bottom">&copy; 2026 <span>Harmain Foods</span>. All rights reserved. Made with &#10084; in Pakistan.</div>
   </div>
 </footer>
-
-<!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/923214174086?text=Hi%20Harmain%20Foods%2C%20I'd%20like%20to%20place%20an%20order!"
-   class="float-wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-  <i class="fa-brands fa-whatsapp"></i>
-</a>
-
+<a href="https://wa.me/923214174086?text=Hi%20Harmain%20Foods%2C%20I'd%20like%20to%20place%20an%20order!" class="float-wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 <script>
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
-  document.getElementById('navToggle').addEventListener('click', () =>
-    document.getElementById('navLinks').classList.toggle('open'));
-  document.querySelectorAll('.nav-links a').forEach(a =>
-    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
+  document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
   function handleForm(e) {
     e.preventDefault();
     const btn = e.target.querySelector('.btn-submit');
