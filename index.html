@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harmain Foods – Frozen &amp; Fresh Delights</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --red:    #c0392b;
+      --red-dk: #922b21;
+      --gold:   #f39c12;
+      --dark:   #1a1a2e;
+      --light:  #f8f9fa;
+      --text:   #2c3e50;
+      --muted:  #6c757d;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); background: #fff; }
+    img  { max-width: 100%; display: block; }
+    a    { text-decoration: none; transition: color .3s; }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+      background: rgba(26,26,46,.97); backdrop-filter: blur(10px);
+      padding: 12px 0; transition: box-shadow .4s;
+    }
+    .navbar.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,.5); }
+    .navbar-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; padding: 0 24px;
+    }
+    .nav-logo { display:flex; align-items:center; gap:12px; }
+    .nav-logo-icon {
+      width:50px; height:50px; background:var(--red); border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-size:22px; color:#fff; flex-shrink:0;
+    }
+    .nav-logo-text { line-height:1.1; }
+    .nav-logo-text strong { display:block; font-size:20px; font-weight:900; color:#fff; letter-spacing:.5px; }
+    .nav-logo-text span   { font-size:10px; color:var(--gold); letter-spacing:3px; text-transform:uppercase; }
+    .nav-links { display:flex; gap:28px; list-style:none; }
+    .nav-links a { color:#ddd; font-size:14px; font-weight:500; padding-bottom:4px; border-bottom:2px solid transparent; }
+    .nav-links a:hover { color:var(--gold); border-color:var(--gold); }
+    .nav-cta { background:var(--red)!important; color:#fff!important; padding:7px 20px; border-radius:25px; border-bottom:none!important; }
+    .nav-cta:hover { background:var(--red-dk)!important; }
+    .nav-toggle { display:none; background:none; border:none; cursor:pointer; }
+    .nav-toggle span { display:block; width:26px; height:3px; background:#fff; margin:5px 0; border-radius:2px; }
+
+    /* HERO */
+    .hero {
+      min-height:100vh;
+      background:linear-gradient(135deg,#1a1a2e 0%,#16213e 55%,#0f3460 100%);
+      display:flex; align-items:center; position:relative; overflow:hidden;
+    }
+    .hero-bg {
+      position:absolute; inset:0;
+      background:url('https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=1600') center/cover no-repeat;
+      opacity:.08;
+    }
+    .particle {
+      position:absolute; border-radius:50%; background:var(--gold); opacity:.12;
+      animation:float 6s ease-in-out infinite;
+    }
+    @keyframes float { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-28px) scale(1.1)} }
+    .hero-content {
+      max-width:1200px; margin:0 auto; padding:130px 24px 70px;
+      display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;
+      position:relative; z-index:1;
+    }
+    .hero-badge {
+      display:inline-block; background:var(--gold); color:#000;
+      font-size:11px; font-weight:800; letter-spacing:2px;
+      padding:5px 14px; border-radius:20px; margin-bottom:20px; text-transform:uppercase;
+    }
+    .hero-title { font-size:clamp(2.4rem,5vw,4rem); font-weight:900; line-height:1.1; color:#fff; margin-bottom:18px; }
+    .hero-title span { color:var(--gold); }
+    .hero-sub  { font-size:1.05rem; color:#b0bec5; line-height:1.75; margin-bottom:34px; }
+    .hero-actions { display:flex; gap:14px; flex-wrap:wrap; }
+    .btn-red {
+      background:var(--red); color:#fff; padding:13px 30px; border-radius:50px;
+      font-size:15px; font-weight:700; border:2px solid var(--red);
+      display:inline-flex; align-items:center; gap:8px;
+      transition:background .3s,transform .2s,box-shadow .3s;
+    }
+    .btn-red:hover { background:var(--red-dk); border-color:var(--red-dk); transform:translateY(-2px); box-shadow:0 8px 24px rgba(192,57,43,.4); color:#fff; }
+    .btn-outline {
+      background:transparent; color:#fff; padding:13px 30px; border-radius:50px;
+      font-size:15px; font-weight:700; border:2px solid rgba(255,255,255,.35);
+      display:inline-flex; align-items:center; gap:8px;
+      transition:border-color .3s,background .3s,transform .2s;
+    }
+    .btn-outline:hover { border-color:var(--gold); color:var(--gold); background:rgba(243,156,18,.08); transform:translateY(-2px); }
+    .hero-stats { display:flex; gap:32px; margin-top:40px; }
+    .stat-num   { font-size:2rem; font-weight:900; color:var(--gold); }
+    .stat-label { font-size:11px; color:#90a4ae; letter-spacing:1px; }
+    .hero-img-wrap { position:relative; display:flex; align-items:center; justify-content:center; }
+    .hero-img-wrap::before {
+      content:''; position:absolute; width:400px; height:400px; border-radius:50%;
+      background:radial-gradient(circle,rgba(192,57,43,.3) 0%,transparent 70%);
+    }
+    .hero-img {
+      width:100%; max-width:460px; border-radius:22px;
+      box-shadow:0 30px 80px rgba(0,0,0,.55);
+      animation:heroFloat 4s ease-in-out infinite; object-fit:cover; height:380px;
+    }
+    @keyframes heroFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+
+    /* TICKER */
+    .ticker { background:var(--gold); overflow:hidden; padding:11px 0; }
+    .ticker-track {
+      display:flex; gap:60px; white-space:nowrap;
+      animation:ticker 24s linear infinite;
+    }
+    @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .ticker-item { font-size:13px; font-weight:800; color:#000; letter-spacing:1px; text-transform:uppercase; display:flex; align-items:center; gap:10px; }
+    .ticker-dot  { width:6px; height:6px; background:var(--red); border-radius:50%; flex-shrink:0; }
+
+    /* SECTIONS */
+    section { padding:90px 24px; }
+    .section-inner { max-width:1200px; margin:0 auto; }
+    .section-tag {
+      display:inline-block; color:var(--red); font-size:12px; font-weight:800;
+      letter-spacing:3px; text-transform:uppercase; margin-bottom:12px;
+    }
+    .section-title { font-size:clamp(1.8rem,4vw,2.7rem); font-weight:900; color:var(--text); margin-bottom:14px; line-height:1.2; }
+    .section-desc  { font-size:1rem; color:var(--muted); max-width:520px; line-height:1.75; }
+    .section-header { margin-bottom:50px; }
+
+    /* CATEGORIES */
+    #categories { background:var(--light); }
+    .cat-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:18px; }
+    .cat-card {
+      background:#fff; border-radius:16px; padding:28px 14px; text-align:center; cursor:pointer;
+      box-shadow:0 4px 18px rgba(0,0,0,.06); transition:transform .3s,box-shadow .3s,border-color .3s;
+      border:2px solid transparent;
+    }
+    .cat-card:hover { transform:translateY(-6px); box-shadow:0 14px 36px rgba(0,0,0,.12); border-color:var(--gold); }
+    .cat-icon { font-size:2.5rem; margin-bottom:12px; display:block; }
+    .cat-name { font-size:13px; font-weight:700; color:var(--text); }
+
+    /* MENU */
+    .menu-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:28px; }
+    .menu-card {
+      background:#fff; border-radius:20px; overflow:hidden;
+      box-shadow:0 6px 22px rgba(0,0,0,.07); transition:transform .3s,box-shadow .3s;
+    }
+    .menu-card:hover { transform:translateY(-8px); box-shadow:0 22px 52px rgba(0,0,0,.14); }
+    .menu-img-wrap { position:relative; overflow:hidden; height:210px; }
+    .menu-img-wrap img { width:100%; height:100%; object-fit:cover; transition:transform .5s; }
+    .menu-card:hover .menu-img-wrap img { transform:scale(1.08); }
+    .menu-badge {
+      position:absolute; top:14px; left:14px; background:var(--red); color:#fff;
+      font-size:11px; font-weight:800; padding:4px 10px; border-radius:20px; letter-spacing:1px;
+    }
+    .menu-badge.new { background:#27ae60; }
+    .menu-body { padding:20px; }
+    .menu-name  { font-size:17px; font-weight:800; color:var(--text); margin-bottom:6px; }
+    .menu-desc  { font-size:13px; color:var(--muted); line-height:1.65; margin-bottom:16px; }
+    .menu-footer { display:flex; align-items:center; justify-content:space-between; }
+    .menu-price { font-size:19px; font-weight:900; color:var(--red); }
+    .menu-price span { font-size:12px; font-weight:400; color:var(--muted); }
+    .btn-order {
+      background:var(--red); color:#fff; border:none;
+      padding:8px 18px; border-radius:25px; font-size:13px; font-weight:700;
+      cursor:pointer; transition:background .3s;
+    }
+    .btn-order:hover { background:var(--red-dk); }
+
+    /* ABOUT */
+    #about { background:var(--dark); }
+    #about .section-tag  { color:var(--gold); }
+    #about .section-title { color:#fff; }
+    #about .section-desc  { color:#90a4ae; }
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+    .about-img { border-radius:20px; overflow:hidden; position:relative; }
+    .about-img img { width:100%; height:420px; object-fit:cover; }
+    .about-img::after {
+      content:''; position:absolute; inset:0;
+      border:3px solid var(--gold); border-radius:20px;
+      transform:translate(12px,12px); z-index:-1;
+    }
+    .feature-list { list-style:none; margin:28px 0; }
+    .feature-list li {
+      display:flex; align-items:flex-start; gap:14px;
+      padding:10px 0; border-bottom:1px solid rgba(255,255,255,.07);
+    }
+    .feature-list li:last-child { border-bottom:none; }
+    .feature-icon {
+      width:42px; height:42px; border-radius:10px;
+      background:rgba(192,57,43,.2); display:flex; align-items:center;
+      justify-content:center; color:var(--gold); font-size:17px; flex-shrink:0;
+    }
+    .feature-text h4 { font-size:15px; font-weight:700; color:#fff; margin-bottom:4px; }
+    .feature-text p  { font-size:13px; color:#90a4ae; line-height:1.6; }
+
+    /* TESTIMONIALS */
+    #testimonials { background:var(--light); }
+    .testi-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:28px; }
+    .testi-card {
+      background:#fff; border-radius:20px; padding:30px;
+      box-shadow:0 6px 22px rgba(0,0,0,.07); position:relative;
+    }
+    .testi-card::before {
+      content:'"'; position:absolute; top:18px; right:22px;
+      font-size:80px; color:var(--gold); opacity:.16; line-height:1; font-family:Georgia,serif;
+    }
+    .testi-stars { color:var(--gold); font-size:15px; margin-bottom:14px; }
+    .testi-text  { font-size:14px; color:var(--muted); line-height:1.75; margin-bottom:20px; font-style:italic; }
+    .testi-author { display:flex; align-items:center; gap:14px; }
+    .testi-avatar {
+      width:46px; height:46px; border-radius:50%;
+      background:linear-gradient(135deg,var(--red),var(--gold));
+      display:flex; align-items:center; justify-content:center;
+      color:#fff; font-size:18px; font-weight:800; flex-shrink:0;
+    }
+    .testi-name { font-size:15px; font-weight:700; color:var(--text); }
+    .testi-role { font-size:12px; color:var(--muted); }
+
+    /* ORDER */
+    #order {
+      background:linear-gradient(135deg,var(--red) 0%,#e74c3c 50%,var(--red-dk) 100%);
+      text-align:center;
+    }
+    #order .section-tag   { color:rgba(255,255,255,.7); }
+    #order .section-title { color:#fff; }
+    #order .section-desc  { color:rgba(255,255,255,.8); margin:0 auto 36px; }
+    .order-phone { font-size:clamp(2rem,5vw,3.4rem); font-weight:900; color:#fff; letter-spacing:2px; margin-bottom:8px; }
+    .order-phone a { color:#fff; }
+    .order-phone a:hover { color:var(--gold); }
+    .order-sub  { color:rgba(255,255,255,.7); margin-bottom:36px; font-size:15px; }
+    .order-channels { display:flex; gap:18px; justify-content:center; flex-wrap:wrap; }
+    .order-btn {
+      display:inline-flex; align-items:center; gap:10px;
+      background:rgba(255,255,255,.14); border:2px solid rgba(255,255,255,.4);
+      color:#fff; padding:13px 26px; border-radius:50px;
+      font-size:15px; font-weight:700; transition:background .3s,border-color .3s;
+    }
+    .order-btn:hover { background:rgba(255,255,255,.24); border-color:#fff; color:#fff; }
+    .order-btn.whatsapp { background:#25d366; border-color:#25d366; }
+    .order-btn.whatsapp:hover { background:#1da851; border-color:#1da851; color:#fff; }
+
+    /* CONTACT */
+    #contact { background:var(--dark); }
+    #contact .section-tag   { color:var(--gold); }
+    #contact .section-title { color:#fff; }
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; }
+    .contact-info h3 { font-size:1.15rem; font-weight:700; color:var(--gold); margin-bottom:24px; }
+    .contact-item  { display:flex; align-items:flex-start; gap:14px; margin-bottom:24px; }
+    .contact-icon  {
+      width:44px; height:44px; border-radius:12px;
+      background:rgba(192,57,43,.2); display:flex; align-items:center;
+      justify-content:center; color:var(--gold); font-size:17px; flex-shrink:0;
+    }
+    .contact-text h4 { font-size:14px; font-weight:700; color:#fff; margin-bottom:4px; }
+    .contact-text p  { font-size:13px; color:#90a4ae; }
+    .contact-text a  { color:#90a4ae; }
+    .contact-text a:hover { color:var(--gold); }
+    .form-group  { margin-bottom:18px; }
+    .form-group label { display:block; font-size:13px; color:#90a4ae; margin-bottom:7px; }
+    .form-ctrl {
+      width:100%; padding:12px 16px; border-radius:10px;
+      background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1);
+      color:#fff; font-size:14px; outline:none; transition:border-color .3s,background .3s;
+    }
+    .form-ctrl:focus { border-color:var(--gold); background:rgba(255,255,255,.08); }
+    .form-ctrl::placeholder { color:#546e7a; }
+    textarea.form-ctrl { resize:vertical; min-height:110px; }
+    .btn-submit {
+      background:var(--red); color:#fff; border:none;
+      padding:13px 36px; border-radius:50px; font-size:15px; font-weight:800;
+      cursor:pointer; transition:background .3s,transform .2s; width:100%;
+    }
+    .btn-submit:hover { background:var(--red-dk); transform:translateY(-2px); }
+
+    /* FOOTER */
+    footer { background:#08081a; color:#90a4ae; padding:50px 24px 22px; }
+    .footer-inner { max-width:1200px; margin:0 auto; }
+    .footer-grid  { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; margin-bottom:40px; }
+    .footer-brand-logo { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+    .footer-brand-logo .logo-icon { width:46px; height:46px; background:var(--red); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px; color:#fff; flex-shrink:0; }
+    .footer-brand-logo .logo-text strong { display:block; font-size:18px; font-weight:900; color:#fff; }
+    .footer-brand-logo .logo-text span   { font-size:9px; color:var(--gold); letter-spacing:3px; text-transform:uppercase; }
+    .footer-brand p { font-size:13px; line-height:1.75; margin-bottom:18px; }
+    .social-links { display:flex; gap:10px; }
+    .social-link {
+      width:38px; height:38px; border-radius:10px;
+      background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1);
+      display:flex; align-items:center; justify-content:center;
+      color:#90a4ae; font-size:15px; transition:background .3s,color .3s,border-color .3s;
+    }
+    .social-link:hover { background:var(--red); color:#fff; border-color:var(--red); }
+    .footer-col h4 { font-size:13px; font-weight:800; color:#fff; margin-bottom:18px; text-transform:uppercase; letter-spacing:1px; }
+    .footer-col ul { list-style:none; }
+    .footer-col ul li { margin-bottom:10px; }
+    .footer-col ul li a { font-size:13px; color:#90a4ae; transition:color .3s; }
+    .footer-col ul li a:hover { color:var(--gold); }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,.06); padding-top:22px; text-align:center; font-size:13px; }
+    .footer-bottom span { color:var(--gold); }
+
+    /* FLOAT BUTTON */
+    .float-wa {
+      position:fixed; bottom:28px; right:28px; z-index:999;
+      width:58px; height:58px; border-radius:50%;
+      background:#25d366; color:#fff; font-size:26px;
+      display:flex; align-items:center; justify-content:center;
+      box-shadow:0 6px 24px rgba(37,211,102,.5); animation:pulse 2s infinite; transition:transform .3s;
+    }
+    .float-wa:hover { transform:scale(1.12); color:#fff; }
+    @keyframes pulse {
+      0%  { box-shadow:0 0 0 0 rgba(37,211,102,.5); }
+      70% { box-shadow:0 0 0 16px rgba(37,211,102,0); }
+      100%{ box-shadow:0 0 0 0 rgba(37,211,102,0); }
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .hero-content  { grid-template-columns:1fr; text-align:center; }
+      .hero-img-wrap { order:-1; }
+      .hero-actions  { justify-content:center; }
+      .hero-stats    { justify-content:center; }
+      .about-grid    { grid-template-columns:1fr; }
+      .contact-grid  { grid-template-columns:1fr; }
+      .footer-grid   { grid-template-columns:1fr 1fr; }
+    }
+    @media(max-width:600px){
+      .nav-links { display:none; flex-direction:column; position:absolute; top:76px; left:0;
+                   width:100%; background:rgba(26,26,46,.98); padding:20px; gap:16px; }
+      .nav-links.open { display:flex; }
+      .nav-toggle { display:block; }
+      .footer-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="#home" class="nav-logo">
+      <div class="nav-logo-icon"><i class="fa-solid fa-bowl-food"></i></div>
+      <div class="nav-logo-text">
+        <strong>Harmain</strong>
+        <span>Foods</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#categories">Categories</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#order" class="nav-cta">Order Now</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-bg"></div>
+  <div class="particle" style="width:80px;height:80px;top:15%;left:7%;animation-delay:0s"></div>
+  <div class="particle" style="width:50px;height:50px;top:72%;left:4%;animation-delay:1.5s"></div>
+  <div class="particle" style="width:32px;height:32px;top:38%;left:93%;animation-delay:2.5s"></div>
+  <div class="particle" style="width:60px;height:60px;top:82%;left:86%;animation-delay:1s"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-badge">&#10022; Harmain's Finest</div>
+      <h1 class="hero-title">Premium <span>Frozen</span><br>&amp; Fresh Foods</h1>
+      <p class="hero-sub">Authentic South Asian flavours, hygienically prepared and frozen at peak freshness. From samosas to parathas — deliciousness delivered to your door.</p>
+      <div class="hero-actions">
+        <a href="#order" class="btn-red"><i class="fa-solid fa-phone"></i> Order Now</a>
+        <a href="#menu"  class="btn-outline"><i class="fa-solid fa-utensils"></i> View Menu</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num">500+</div><div class="stat-label">Happy Customers</div></div>
+        <div><div class="stat-num">20+</div><div class="stat-label">Menu Items</div></div>
+        <div><div class="stat-num">5&#9733;</div><div class="stat-label">Avg Rating</div></div>
+      </div>
+    </div>
+    <div class="hero-img-wrap">
+      <img class="hero-img"
+           src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&q=80"
+           alt="Harmain Foods" />
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="ticker-dot"></span>Samosas</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Seekh Kebab</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Lacha Paratha</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>French Fries</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Shami Kebab</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Chicken Rolls</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Aloo Cutlets</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Spring Rolls</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Samosas</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Seekh Kebab</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Lacha Paratha</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>French Fries</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Shami Kebab</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Chicken Rolls</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Aloo Cutlets</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Spring Rolls</span>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section id="categories">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Browse by Category</span>
+      <h2 class="section-title">What Are You Craving?</h2>
+      <p class="section-desc">From crispy snacks to hearty mains — something for every mood.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card"><span class="cat-icon">&#129393;</span><div class="cat-name">Frozen Snacks</div></div>
+      <div class="cat-card"><span class="cat-icon">&#127840;</span><div class="cat-name">Kebabs</div></div>
+      <div class="cat-card"><span class="cat-icon">&#127859;</span><div class="cat-name">Parathas</div></div>
+      <div class="cat-card"><span class="cat-icon">&#127798;</span><div class="cat-name">Rolls</div></div>
+      <div class="cat-card"><span class="cat-icon">&#129368;</span><div class="cat-name">Fries</div></div>
+      <div class="cat-card"><span class="cat-icon">&#127860;</span><div class="cat-name">Cutlets</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu" style="background:#fff">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Our Menu</span>
+      <h2 class="section-title">Fresh From Our Kitchen</h2>
+      <p class="section-desc">Every item made with care using quality ingredients and authentic recipes.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-img-wrap">
+          <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80" alt="Samosa" loading="lazy"/>
+          <span class="menu-badge">Bestseller</span>
+        </div>
+        <div class="menu-body">
+          <div class="menu-name">Crispy Samosas</div>
+          <div class="menu-desc">Golden fried pastry filled with spiced potatoes and peas. Perfect for every occasion.</div>
+          <div class="menu-footer">
+            <div class="menu-price">PKR 250 <span>/ 10 pcs</span></div>
+            <button class="btn-order" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Order</button>
+          </div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-img-wrap">
+          <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=600&q=80" alt="Seekh Kebab" loading="lazy"/>
+          <span class="menu-badge">Popular</span>
+        </div>
+        <div class="menu-body">
+          <div class="menu-name">Seekh Kebab</div>
+          <div class="menu-desc">Juicy minced beef kebabs marinated with aromatic spices, grilled to perfection.</div>
+          <div class="menu-footer">
+            <div class="menu-price">PKR 350 <span>/ 8 pcs</span></div>
+            <button class="btn-order" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Order</button>
+          </div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-img-wrap">
+          <img src="https://images.unsplash.com/photo-1630409351241-e90e7f6a81d2?w=600&q=80" alt="Lacha Paratha" loading="lazy"/>
+          <span class="menu-badge new">New!</span>
+        </div>
+        <div class="menu-body">
+          <div class="menu-name">Lacha Paratha</div>
+          <div class="menu-desc">Flaky layered flatbread — crisp on the outside, soft and buttery inside.</div>
+          <div class="menu-footer">
+            <div class="menu-price">PKR 180 <span>/ 5 pcs</span></div>
+            <button class="btn-order" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Order</button>
+          </div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-img-wrap">
+          <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&q=80" alt="French Fries" loading="lazy"/>
+          <span class="menu-badge new">New!</span>
+        </div>
+        <div class="menu-body">
+          <div class="menu-name">French Fries</div>
+          <div class="menu-desc">Thick-cut golden fries, perfectly seasoned. Fry straight from the freezer.</div>
+          <div class="menu-footer">
+            <div class="menu-price">PKR 200 <span>/ pack</span></div>
+            <button class="btn-order" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Order</button>
+          </div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-img-wrap">
+          <img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=600&q=80" alt="Chicken Roll" loading="lazy"/>
+          <span class="menu-badge">Popular</span>
+        </div>
+        <div class="menu-body">
+          <div class="menu-name">Chicken Rolls</div>
+          <div class="menu-desc">Crispy rolls packed with spicy chicken filling — the ultimate snack.</div>
+          <div class="menu-footer">
+            <div class="menu-price">PKR 300 <span>/ 10 pcs</span></div>
+            <button class="btn-order" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Order</button>
+          </div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-img-wrap">
+          <img src="https://images.unsplash.com/photo-1545247181-516773cae754?w=600&q=80" alt="Shami Kebab" loading="lazy"/>
+        </div>
+        <div class="menu-body">
+          <div class="menu-name">Shami Kebab</div>
+          <div class="menu-desc">Classic daal-infused kebabs with fresh herbs and green chilli. A Pakistani staple.</div>
+          <div class="menu-footer">
+            <div class="menu-price">PKR 320 <span>/ 12 pcs</span></div>
+            <button class="btn-order" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800&q=80" alt="About Harmain Foods"/>
+      </div>
+      <div>
+        <span class="section-tag">Our Story</span>
+        <h2 class="section-title">Crafted with Love,<br>Frozen for Freshness</h2>
+        <p class="section-desc">Harmain Foods was born from a passion for authentic South Asian home cooking. Every product is made from scratch using traditional recipes, then frozen at peak freshness so you enjoy the same homemade taste every time.</p>
+        <ul class="feature-list">
+          <li>
+            <div class="feature-icon"><i class="fa-solid fa-check"></i></div>
+            <div class="feature-text"><h4>100% Halal Certified</h4><p>All our meat is sourced from certified halal suppliers.</p></div>
+          </li>
+          <li>
+            <div class="feature-icon"><i class="fa-solid fa-snowflake"></i></div>
+            <div class="feature-text"><h4>Flash-Frozen for Quality</h4><p>Frozen within hours of cooking to preserve maximum flavour.</p></div>
+          </li>
+          <li>
+            <div class="feature-icon"><i class="fa-solid fa-truck"></i></div>
+            <div class="feature-text"><h4>Fast Home Delivery</h4><p>Order by phone or WhatsApp — we deliver to your doorstep.</p></div>
+          </li>
+          <li>
+            <div class="feature-icon"><i class="fa-solid fa-leaf"></i></div>
+            <div class="feature-text"><h4>No Artificial Preservatives</h4><p>Clean ingredients you can trust, just like grandma's kitchen.</p></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Customer Reviews</span>
+      <h2 class="section-title">What Our Customers Say</h2>
+      <p class="section-desc">Real feedback from real food lovers.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testi-text">"The samosas are absolutely incredible — crispy outside, perfectly spiced inside. I keep a stock in the freezer at all times. Best frozen food in the city!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">A</div>
+          <div><div class="testi-name">Ayesha Khan</div><div class="testi-role">Lahore, Pakistan</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testi-text">"Ordered the seekh kebab and lacha paratha combo — wow! It tasted like fresh restaurant food. Delivery was quick and packaging was excellent."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">U</div>
+          <div><div class="testi-name">Usman Raza</div><div class="testi-role">Faisalabad, Pakistan</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testi-text">"As a working mum, Harmain Foods has been a lifesaver. The french fries and chicken rolls are my kids' favourites — ready in minutes and so delicious!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">S</div>
+          <div><div class="testi-name">Sana Mirza</div><div class="testi-role">Karachi, Pakistan</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER -->
+<section id="order">
+  <div class="section-inner">
+    <span class="section-tag">Place Your Order</span>
+    <h2 class="section-title">Ready to Order?</h2>
+    <p class="section-desc">Call us directly or ping us on WhatsApp — we'll take care of the rest!</p>
+    <div class="order-phone"><a href="tel:+923214174086">032-141-74086</a></div>
+    <div class="order-sub">Available 9 AM – 10 PM &nbsp;|&nbsp; 7 days a week</div>
+    <div class="order-channels">
+      <a href="tel:+923214174086" class="order-btn"><i class="fa-solid fa-phone"></i> Call Us</a>
+      <a href="https://wa.me/923214174086?text=Hi%20Harmain%20Foods%2C%20I'd%20like%20to%20place%20an%20order!"
+         class="order-btn whatsapp" target="_blank" rel="noopener">
+        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Get In Touch</span>
+      <h2 class="section-title">Contact Us</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>We'd Love to Hear From You</h3>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+          <div class="contact-text"><h4>Phone / WhatsApp</h4><p><a href="tel:+923214174086">032-141-74086</a></p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div class="contact-text"><h4>Location</h4><p>Pakistan</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fa-solid fa-clock"></i></div>
+          <div class="contact-text"><h4>Working Hours</h4><p>Monday – Sunday<br/>9:00 AM – 10:00 PM</p></div>
+        </div>
+      </div>
+      <form onsubmit="handleForm(event)">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" class="form-ctrl" placeholder="e.g. Ali Hassan" required />
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" class="form-ctrl" placeholder="03XX-XXXXXXX" required />
+        </div>
+        <div class="form-group">
+          <label>Your Order / Message</label>
+          <textarea class="form-ctrl" placeholder="Tell us what you'd like to order..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send Message &rarr;</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-logo">
+          <div class="logo-icon"><i class="fa-solid fa-bowl-food"></i></div>
+          <div class="logo-text"><strong>Harmain</strong><span>Foods</span></div>
+        </div>
+        <p>Premium frozen and fresh South Asian food, crafted with love and delivered to your doorstep.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://wa.me/923214174086" class="social-link" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#categories">Categories</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#order">Order Now</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Our Menu</h4>
+        <ul>
+          <li><a href="#menu">Samosas</a></li>
+          <li><a href="#menu">Seekh Kebab</a></li>
+          <li><a href="#menu">Lacha Paratha</a></li>
+          <li><a href="#menu">French Fries</a></li>
+          <li><a href="#menu">Chicken Rolls</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+923214174086">032-141-74086</a></li>
+          <li><a href="https://wa.me/923214174086">WhatsApp</a></li>
+          <li><a href="#contact">Send Message</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 <span>Harmain Foods</span>. All rights reserved. Made with &#10084; in Pakistan.</div>
+  </div>
+</footer>
+
+<a href="https://wa.me/923214174086?text=Hi%20Harmain%20Foods%2C%20I'd%20like%20to%20place%20an%20order!"
+   class="float-wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
+  document.getElementById('navToggle').addEventListener('click', () =>
+    document.getElementById('navLinks').classList.toggle('open'));
+  document.querySelectorAll('.nav-links a').forEach(a =>
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
+  function handleForm(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    btn.textContent = 'Message Sent! ✓';
+    btn.style.background = '#27ae60';
+    setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = ''; e.target.reset(); }, 3000);
+  }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } });
+  }, {threshold:0.1});
+  document.querySelectorAll('.menu-card,.cat-card,.testi-card,.about-grid,.contact-grid').forEach(el => {
+    el.style.opacity='0'; el.style.transform='translateY(28px)';
+    el.style.transition='opacity .6s ease,transform .6s ease'; io.observe(el);
+  });
+</script>
+</body>
+</html>
